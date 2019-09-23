@@ -1,7 +1,7 @@
 <h1>Recipes Index</h1>
 
 <% @recipes.each do |recipe| %>
-  <h2><%= recipe["title"] %></h2>
+  <h2><a href="/client/recipes/<%= recipe["id"] %>"><%= recipe["title"] %></a></h2>
   <h4>Chef: <%= recipe["chef"] %></h4>
   <h5>Ingredients: <%= recipe["ingredients"] %></h5>
   <h5>Directions: <%= recipe["directions"] %></h5>
