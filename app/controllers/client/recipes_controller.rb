@@ -9,6 +9,22 @@ class Client::RecipesController < ApplicationController
     render 'new.html.erb'
   end
 
+  def create
+    response = HTTP.post(
+                          "http://localhost:3000/api/recipes", 
+                          form: {
+                                  title: params[:title],
+                                  chef: params[:chef],
+                                  ingredients: params[:ingredients],
+                                  directions: params[:directions],
+                                  prep_time: params[:prep_time],
+                                  image_url: params[:image_url]
+                                }
+                          )
+    @recipe = response.parse
+    redirect_to "/client/recipes/#{@recipe["id"]}"
+  end
+
   def show
     response = HTTP.get("http://localhost:3000/api/recipes/#{params[:id]}")
     @recipe = response.parse
