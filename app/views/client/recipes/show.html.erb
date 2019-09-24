@@ -18,7 +18,9 @@
 
 <div>
   <a href="/client/recipes/<%= @recipe['id'] %>/edit">Edit</a>
-  <a href="/client/recipes/<%= @recipe['id'] %>" data-method="delete">Delete</a>
+  <%= form_tag "/client/recipes/#{ @recipe['id'] }", method: :delete do %>
+    <input type="submit" value="Destroy">
+  <% end %>
 </div>
 
 <img src="<%= @recipe["image_url"] %>">
